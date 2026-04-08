@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto";
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top left, rgba(217, 164, 65, 0.16), transparent 28%),
+    radial-gradient(circle at top right, rgba(20, 184, 166, 0.14), transparent 24%),
+    radial-gradient(circle at bottom center, rgba(56, 189, 248, 0.08), transparent 34%),
+    linear-gradient(180deg, #050b14 0%, #0b1320 42%, #111827 100%);
+  color: #f8fafc;
+}
+
+body {
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.03) 0%, transparent 30%),
+    linear-gradient(300deg, rgba(217, 164, 65, 0.05) 0%, transparent 38%);
+  mix-blend-mode: screen;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+::selection {
+  background: rgba(217, 164, 65, 0.28);
+  color: #fff7ed;
+}
+
+::-moz-selection {
+  background: rgba(217, 164, 65, 0.28);
+  color: #fff7ed;
+}

@@ -1,0 +1,83 @@
+version: '3.0'
+
+services:
+  frontend:
+    build: ./frontend-nginx
+    restart: always
+    container_name: frontend-nginx
+    ports:
+      - 8080:80
+    # Add these two lines so it can see the Auth service
+    networks:
+      - web
+  auth:
+    build: ./auth
+    restart: always
+    container_name: auth
+    ports:
+      - "8081:8080"
+    depends_on:
+      - redis
+    links: ["redis"] 
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/test
+      - REDIS_URI=redis://redis:6379
+      - EXPIRATION_TIME=2617920000
+    networks:
+      - web
+      - mainnet
+
+  dl:
+    build: ./dl
+    restart: always
+    container_name: dl
+    ports:
+      - "8082:8000"
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/test
+      - PYTHONUNBUFFERED=1
+      - REDIS_URI=redis://redis:6379
+    networks:
+      - web
+      - mainnet
+
+  # nginx:
+    # image: nginx
+    # container_name: nginx
+    # restart: always
+    # ports:
+    #   - "8080:8080"
+    # volumes:
+    #   - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    # networks:
+    #   - web
+    #   - mainnet
+
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+    restart: always
+    networks:
+      - web
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    volumes:
+      - mongodb_data_container:/data/db
+    ports:
+      - 27018:27017
+    restart: always
+    networks:
+      - web
+
+volumes:
+  mongodb_data_container:
+
+networks:
+  web:
+    driver: bridge
+  mainnet:
+    driver: bridge
