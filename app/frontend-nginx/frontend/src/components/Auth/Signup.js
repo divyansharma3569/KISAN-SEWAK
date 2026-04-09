@@ -10,7 +10,6 @@ import { useDispatch } from "react-redux";
 
 const phoneRegex = /^\d{10}$/;
 
-// REMOVED 'type' from required validation since we do it secretly now!
 let schema = yup.object().shape({
   firstName: yup.string().required(),
   lastName: yup.string().required(),
@@ -27,8 +26,6 @@ function Signup() {
 
   const submitHandler = (data) => {
     setSignupError("");
-    
-    // SECRETLY add the type so the backend is happy!
     data.type = "farmer"; 
 
     axiosInstance
@@ -71,7 +68,7 @@ function Signup() {
               className={`mt-1 px-3 py-2.5 bg-slate-900/80 text-slate-100 border border-slate-700 focus:outline-none block w-full rounded-xl sm:text-sm focus:ring-1 transition-colors ${
                 errors?.firstName ? "border-red-400 focus:ring-red-500" : "focus:border-amber-300 focus:ring-amber-300"
               }`}
-              placeholder="First"
+              placeholder={t("description.placeholders.first")} // Updated
               {...register("firstName")}
             />
           </label>
@@ -87,7 +84,7 @@ function Signup() {
               className={`mt-1 px-3 py-2.5 bg-slate-900/80 text-slate-100 border border-slate-700 focus:outline-none block w-full rounded-xl sm:text-sm focus:ring-1 transition-colors ${
                 errors?.lastName ? "border-red-400 focus:ring-red-500" : "focus:border-amber-300 focus:ring-amber-300"
               }`}
-              placeholder="Last"
+              placeholder={t("description.placeholders.last")} // Updated
               {...register("lastName")}
             />
           </label>
@@ -104,7 +101,7 @@ function Signup() {
             className={`mt-1 px-3 py-2.5 bg-slate-900/80 text-slate-100 border border-slate-700 focus:outline-none block w-full rounded-xl sm:text-sm focus:ring-1 transition-colors ${
               errors?.username ? "border-red-400 focus:ring-red-500" : "focus:border-amber-300 focus:ring-amber-300"
             }`}
-            placeholder="Username"
+            placeholder={t("description.placeholders.username")} // Updated
             {...register("username")}
           />
         </label>
@@ -116,13 +113,12 @@ function Signup() {
           <span className="after:content-['*'] after:ml-0.5 after:text-red-400 block text-sm font-medium text-slate-200">
             {t("description.auth.6")}
           </span>
-          {/* Phone input now takes full width since 'type' dropdown is gone! */}
           <input
             type="text"
             className={`mt-1 px-3 py-2.5 bg-slate-900/80 text-slate-100 border border-slate-700 focus:outline-none block w-full rounded-xl sm:text-sm focus:ring-1 transition-colors ${
               errors?.phone ? "border-red-400 focus:ring-red-500" : "focus:border-amber-300 focus:ring-amber-300"
             }`}
-            placeholder="10-digit number"
+            placeholder={t("description.placeholders.phone")} // Updated
             {...register("phone")}
           />
         </label>
@@ -139,7 +135,7 @@ function Signup() {
             className={`mt-1 px-3 py-2.5 bg-slate-900/80 text-slate-100 border border-slate-700 focus:outline-none block w-full rounded-xl sm:text-sm focus:ring-1 transition-colors ${
               errors?.password ? "border-red-400 focus:ring-red-500" : "focus:border-amber-300 focus:ring-amber-300"
             }`}
-            placeholder="******"
+            placeholder={t("description.placeholders.password")} // Updated
             {...register("password")}
           />
         </label>
@@ -147,11 +143,13 @@ function Signup() {
       </div>
 
       <div className="flex justify-center mt-2">
-        <input
+        <button
           type="submit"
-          value={t("description.auth.2")}
-          className="h-12 w-full bg-gradient-to-r from-amber-300 to-orange-500 text-slate-950 rounded-xl font-bold shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:scale-[1.02] cursor-pointer transition-all"
-        />
+          className="h-12 w-full bg-gradient-to-r from-amber-300 to-orange-500 text-slate-950 rounded-xl font-bold shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:scale-[1.02] cursor-pointer transition-all notranslate"
+        >
+          {/* Wrapping in a span prevents React DOM conflicts with Google Translate */}
+          <span>{t("description.auth.2")}</span>
+        </button>
       </div>
     </form>
   );

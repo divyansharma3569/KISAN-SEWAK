@@ -5,6 +5,7 @@ from app.schemas import validate_detectionHistory
 from bson.objectid import ObjectId
 import flask
 from flask_cors import CORS, cross_origin
+from app.llm_enhancer import enhance_diagnostic_data
 
 
 @blueprint.route("/api/dl", methods=["GET"])
@@ -117,14 +118,22 @@ def dl_detection():
             "chemical": "N/A",
         }
 
-        response = flask.jsonify(
-            {
-                "ok": True,
-                "detection": detection,
-                "plant": plant_info if plant_info else fallback_plant,
-                "disease": disease_info if disease_info else fallback_disease,
-            }
-        )
+        # 1. Prepare the raw data dictionary
+        raw_response_data = {
+            "ok": True,
+            "detection": detection,
+            "plant": plant_info if plant_info else fallback_plant,
+            "disease": disease_info if disease_info else fallback_disease,
+        }
+
+        # 2. Extract the language sent from the React frontend
+        lang = request.form.get("lang", "en")
+
+        # 3. Pass the language to our LLM Enhancer
+        enhanced_data = enhance_diagnostic_data(detection, raw_response_data, lang)
+
+        # 4. Return the enhanced data back to the frontend
+        response = flask.jsonify(enhanced_data)
         return response
 
     except Exception as ex:

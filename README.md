@@ -1,70 +1,99 @@
 # 🌾 Kisan Sewak: Empowering Farmers with AI
 
-<div align="center">
-  <!-- Add your logo link below -->
-  <img src="/Users/bot/KISAN-SEWAK/app/frontend-nginx/frontend/src/assets/images/Kisan-Sewak.png" width="150" alt="Kisan Sewak Logo" />
-  <p><em>An automated plant disease detection ecosystem.</em></p>
-</div>
-
----
-
-## 📖 Overview
-**Kisan Sewak** is a comprehensive, microservice-based application designed to support farmers in identifying plant diseases and accessing expert advice. By leveraging Deep Learning and Real-time Communication, the platform provides an all-in-one toolkit for modern agriculture management.
+Kisan Sewak is a high-performance, microservice-based ecosystem designed to revolutionize agricultural management. By merging **Computer Vision** with **Large Language Models (LLM)**, it provides farmers with instant, localized, and actionable insights into plant health.
 
 ---
 
 ## 🚀 Key Features
 
-- **AI-Powered Disease Detection**  
-  Uses a high-performance **ResNet9** model to identify plant diseases from uploaded images.
+### 🧠 Hybrid AI Diagnostic Engine
 
-- **Comprehensive Dashboard**  
-  Visualizes agricultural data using **ApexCharts**, including disease trends and statistics.
+- **Precision Detection**  
+  Uses a custom-trained **ResNet9 Deep Learning model** to identify **38+ classes of plant diseases** from leaf images.
 
-- **Multilingual Support**  
-  Supports multiple languages using **i18next** and Google Translate.
+- **LLM Enhancement**  
+  Integration with **Groq (Llama 3.3 70B)** API to transform raw model predictions into detailed agricultural advice.
+
+- **Treatment Plans**  
+  Automatically generates **step-by-step Organic and Chemical control measures** for each detected disease.
 
 ---
 
-## 🏗️ System Architecture
+### 🌍 Multilingual & Localized Experience
 
-The project follows a modern **Microservices Architecture**, ensuring scalability and modularity.
+- **Dynamic Translation**  
+  Full support for **English and Hindi**, helping farmers understand advice in their native language.
 
-- **Frontend**: React, Ionic, Capacitor  
-- **Authentication Service**: Node.js, MongoDB, Redis  
-- **Deep Learning Service**: Flask-based API (ResNet9 model)  
-- **Data Pipeline**: Web scraping for plant disease data  
+- **Geo-Awareness**  
+  Captures **IP-based location data** (State, City, District) to track disease outbreaks across regions like Rajasthan.
+
+---
+
+### 📊 Farmer Utilities
+
+- **Smart Dashboard**  
+  Real-time visualization of disease trends using **ApexCharts**.
+
+- **PDF Reports**  
+  One-click generation of professional reports using **html2pdf.js**.
+
+- **Mobile Ready**  
+  Built with **React, Ionic, and Capacitor**, making it accessible on both web and mobile devices.
+
+---
+
+## 🏗️ Microservices Architecture
+
+The system is divided into independent services for better scalability and reliability:
+
+- **Frontend-Nginx**  
+  React-based SPA served via Nginx (main UI).
+
+- **Auth Service**  
+  Node.js/Express service for authentication, Redis sessions, and MongoDB storage.
+
+- **Deep Learning (DL) Service**  
+  Flask API handling image processing, ResNet9 inference, and LLM enhancement.
+
+- **Web Scraping**  
+  Automated scripts to keep disease data updated using external sources.
 
 ---
 
 ## 🛠️ Technology Stack
 
 | Component | Technologies Used |
-| :--- | :--- |
-| **Frontend** | React, Tailwind CSS, Redux Toolkit, Ionic/Capacitor |
-| **Backend** | Node.js, Express, Flask |
-| **Databases** | MongoDB, Redis |
-| **Machine Learning** | PyTorch (ResNet9), Python |
-| **DevOps** | Nginx, Docker, Docker-compose |
+|----------|------------------|
+| Frontend | React.js, Tailwind CSS, Redux Toolkit, i18next, html2pdf.js |
+| AI/ML | PyTorch (ResNet9), Groq Cloud API (Llama 3.3 70B) |
+| Backend | Node.js (Auth), Flask (DL Service), Python 3.8+ |
+| Data | MongoDB, Redis |
+| DevOps | Docker, Docker Compose, Nginx |
 
 ---
 
 ## 📂 Project Structure
-
-```text
+```
 KISAN-SEWAK/
 ├── app/
-│   ├── auth/               # Node.js Authentication Service
-│   ├── dl/                 # Flask Deep Learning Service
-│   ├── frontend-nginx/     # React Frontend & Nginx Gateway
-└── Web-scraping/           # Data Scraping Scripts
+│ ├── auth/ # Node.js Auth: User management & Dashboard logic
+│ ├── dl/ # Flask DL: ResNet9 Inference & LLM Enhancer
+│ │ └── app/ResNet/ # Pre-trained .pth model files
+│ ├── frontend-nginx/ # React: UI, i18n, and PDF generation
+│ └── docker-compose.yml # Orchestration for all services
+└── Web-scraping/ # BeautifulSoup scripts for disease data
 ```
+
+---
+
 ## ⚙️ Getting Started
 
 ### Prerequisites
 * **Docker & Docker Compose**: Required for containerized deployment.
 * **Node.js (v14+)**: Required for local development of the Auth and Frontend services.
 * **Python (v3.8+)**: Required for the Deep Learning and PDF generation modules.
+
+---
 
 ## Run with Docker
 
@@ -73,4 +102,7 @@ cd app
 docker-compose up --build
 ```
 
+---
+
 **<p align="center">Made with ❤️ for the farming community.</p>**
+---

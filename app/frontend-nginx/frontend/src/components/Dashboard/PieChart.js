@@ -1,17 +1,22 @@
 import React from "react";
 import Chart from "react-apexcharts";
+import { useTranslation } from "react-i18next"; // Translation hook added
 
 const PieChart = ({ plantData }) => {
+  const { t } = useTranslation();
+
   // Ensure we gracefully handle empty or loading data
   const series = plantData?.data || [];
-  const labels = plantData?.legends || [];
+  
+  // Every label is being dynamically translated here
+  const labels = plantData?.legends?.map(label => t(label)) || [];
 
   const options = {
     chart: {
       type: "donut",
       foreColor: "#e2e8f0", // Light text for dark mode
     },
-    labels: labels,
+    labels: labels, // Translated labels are passed here
     plotOptions: {
       pie: {
         customScale: 1, 

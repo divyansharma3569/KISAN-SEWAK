@@ -105,7 +105,8 @@ function Dashboard() {
     <div className="min-h-screen p-6 lg:p-8 text-slate-100">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-orange-400 mb-2">
+        {/* Adjusted py-4 and leading-normal to prevent Hindi text clipping */}
+        <h1 className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-orange-400 mb-2 py-4 leading-normal">
           {t('Dashboard')}
         </h1>
         <p className="text-slate-400">{t('Real-time plant health monitoring and analytics')}</p>
@@ -132,7 +133,8 @@ function Dashboard() {
         <div className="rounded-2xl p-6 bg-gradient-to-br from-orange-500/10 to-orange-500/5 border border-orange-300/20 shadow-lg hover:border-orange-300/40 transition-all">
           <div className="text-orange-300/70 text-sm font-medium mb-2">{t('Top at Risk')}</div>
           <div className="text-4xl font-bold text-orange-200 mb-1 flex items-center gap-2">
-            <GiCorn /> {stats.topPlant}
+            {/* Dynamic translation applied here using t() */}
+            <GiCorn /> {t(stats.topPlant)}
           </div>
           <div className="text-xs text-slate-400">{t('Most affected overall')}</div>
         </div>
@@ -151,14 +153,14 @@ function Dashboard() {
         {/* Large Chart - Left */}
         <div className="lg:col-span-2 rounded-2xl p-6 border border-amber-200/10 bg-slate-950/70 backdrop-blur-md shadow-xl">
           <h2 className="text-xl font-bold text-amber-100 mb-4">{t('Plant Impact Analysis')}</h2>
-          {/* Dynamically passing diseaseData */}
+          {/* We use our updated ApexBarChart which handles its own dynamic translations */}
           <ApexBarChart diseaseData={diseaseData} />
         </div>
 
         {/* Pie Chart - Right */}
         <div className="rounded-2xl p-6 border border-amber-200/10 bg-slate-950/70 backdrop-blur-md shadow-xl">
           <h2 className="text-xl font-bold text-amber-100 mb-4">{t('Distribution')}</h2>
-          {/* Dynamically passing plantData */}
+          {/* We use our updated PieChart which handles its own dynamic translations */}
           <PieChart plantData={plantData} />
         </div>
       </div>

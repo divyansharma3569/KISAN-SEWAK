@@ -15,12 +15,12 @@ let schema = yup.object().shape({
 
 function Login() {
   const { t } = useTranslation();
-  const [loginError, setLoginError] = useState(""); // NEW: Error state
+  const [loginError, setLoginError] = useState(""); 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const submitHandler = (data) => {
-    setLoginError(""); // Clear previous errors
+    setLoginError(""); 
     axiosInstance
       .post("/auth/login", data)
       .then((response) => {
@@ -28,7 +28,6 @@ function Login() {
         navigate("/disease-detection");
       })
       .catch((error) => {
-        // NEW: Catch block sets the error message
         setLoginError("Entered username or password is wrong - please check again.");
       });
   };
@@ -45,7 +44,6 @@ function Login() {
       autoComplete="true"
       onSubmit={handleSubmit(submitHandler)}
     >
-      {/* NEW: Error Banner */}
       {loginError && (
         <div className="bg-red-500/10 border border-red-500/50 text-red-400 px-4 py-3 rounded-xl text-sm font-medium text-center">
           {loginError}
@@ -60,12 +58,12 @@ function Login() {
           <input
             type="text"
             name="username"
-            className={`mt-1 px-4 py-3 bg-slate-900/80 text-slate-100 border shadow-sm border-slate-700 placeholder-slate-500 focus:outline-none block w-full rounded-xl sm:text-sm focus:ring-1 transition-colors ${
+            className={`mt-1 px-4 py-3 bg-slate-900/80 text-slate-100 border shadow-sm border-slate-700 focus:outline-none block w-full rounded-xl sm:text-sm focus:ring-1 transition-colors ${
               errors?.username
                 ? "border-red-400 focus:border-red-500 focus:ring-red-500"
                 : "focus:border-amber-300 focus:ring-amber-300"
             }`}
-            placeholder="Enter username"
+            placeholder={t("description.placeholders.username")} // Updated to use i18n
             {...register("username")}
           />
         </label>
@@ -82,12 +80,12 @@ function Login() {
           <input
             type="password"
             name="password"
-            className={`mt-1 px-4 py-3 bg-slate-900/80 text-slate-100 border shadow-sm border-slate-700 placeholder-slate-500 focus:outline-none block w-full rounded-xl sm:text-sm focus:ring-1 transition-colors ${
+            className={`mt-1 px-4 py-3 bg-slate-900/80 text-slate-100 border shadow-sm border-slate-700 focus:outline-none block w-full rounded-xl sm:text-sm focus:ring-1 transition-colors ${
               errors?.password
                 ? "border-red-400 focus:border-red-500 focus:ring-red-500"
                 : "focus:border-amber-300 focus:ring-amber-300"
             }`}
-            placeholder="******"
+            placeholder={t("description.placeholders.password")} // Updated to use i18n
             {...register("password")}
           />
         </label>
@@ -97,11 +95,13 @@ function Login() {
       </div>
 
       <div className="flex justify-center mt-4">
-        <input
+        <button
           type="submit"
-          value={t("description.auth.3")}
-          className="h-12 w-full bg-gradient-to-r from-amber-300 to-orange-500 text-slate-950 rounded-xl font-bold shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:scale-[1.02] cursor-pointer transition-all"
-        />
+          className="h-12 w-full bg-gradient-to-r from-amber-300 to-orange-500 text-slate-950 rounded-xl font-bold shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:scale-[1.02] cursor-pointer transition-all notranslate"
+        >
+          {/* Wrapping in a span prevents React DOM conflicts with Google Translate */}
+          <span>{t("description.auth.3")}</span>
+        </button>
       </div>
     </form>
   );

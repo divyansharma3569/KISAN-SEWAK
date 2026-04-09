@@ -36,6 +36,36 @@ i18n
           "activeFarmers": "Active Farmers",
           "accuracyRate": "Accuracy Rate",
           "cropTypes": "Crop Types",
+          
+          // --- Plants (Dynamic Outputs) ---
+          "Apple": "Apple",
+          "Corn_(maize)": "Corn (Maize)",
+          "Grape": "Grape",
+          "Pepper bell": "Pepper Bell",
+          "Pepper_bell": "Pepper Bell",
+          "Potato": "Potato",
+          "Strawberry": "Strawberry",
+          "Tomato": "Tomato",
+          "N/A": "N/A",
+
+          // --- Diseases (Dynamic Outputs) ---
+          "Healthy": "Healthy",
+          "Apple Black rot": "Apple Black Rot",
+          "Apple scab": "Apple Scab",
+          "Apple Cedar rust": "Apple Cedar Rust",
+          "Corn Common rust": "Corn Common Rust",
+          "Grape Black rot": "Grape Black Rot",
+          "Potato Early blight": "Potato Early Blight",
+          "Potato Late blight": "Potato Late Blight",
+          "Strawberry Leaf scorch": "Strawberry Leaf Scorch",
+          "Pepper_bell Bacterial spot": "Pepper Bell Bacterial Spot",
+          "Tomato Early blight": "Tomato Early Blight",
+          "Tomato Septoria leaf spot": "Tomato Septoria Leaf Spot",
+          "Tomato Target Spot": "Tomato Target Spot",
+          "Tomato Yellow Curl Virus": "Tomato Yellow Leaf Curl Virus",
+          "Tomato mosaic virus": "Tomato Mosaic Virus",
+          "Tomato healthy": "Tomato Healthy",
+
           description: {
             nav: [
               "Home",
@@ -48,7 +78,7 @@ i18n
             ],
             heading: [
               "YOUR CROP DOCTOR",
-              "Crop disease detection made easy Sign up with us today!",
+              "Crop Disease Detection Made Easy!",
               "Join Us",
             ],
             home: [
@@ -58,7 +88,7 @@ i18n
               "Get started",
               "Aiding Indian Farmers",
               "One-Stop Solution for Crop Related Issues",
-              "Detection and Reliable Solutions, Teleconsulting with Experts and a Community Forum for Farmers.",
+              "Detection and Reliable Solutions for Farmers. Coming soon: Teleconsultation with Experts and a Community Forum.",
               "Get started",
               "Problems faced by Farmers",
               "Knowing the exact crop disease is important before treating it.",
@@ -86,6 +116,44 @@ i18n
               "Farmer",
               "Expert",
             ],
+            placeholders: {
+              username: "Enter username",
+              password: "******",
+              first: "First",
+              last: "Last",
+              phone: "10-digit number"
+            }
+          },
+          report: {
+            downloadPdf: "Download PDF",
+            title: "🌾 Kisan Sewak Diagnostic Report",
+            plantName: "Plant / Crop Name",
+            scientificName: "Scientific Name",
+            description: "Plant Description",
+            diseaseName: "Disease Name",
+            symptoms: "Symptoms",
+            trigger: "Trigger",
+            organic: "Control using organic method",
+            chemical: "Control using chemical method"
+          },
+          teleconsulting: {
+            heading: "Connecting you with the experts...",
+            startVideoCall: "Start Video Call",
+            copyId: "Copy ID",
+            receiverId: "Receiver ID",
+            callButton: "Call",
+            answerButton: "Answer",
+            namePlaceholder: "Name",
+            calling: "Calling...",
+            comingSoon: "🚀 Coming Soon",
+            title: "Expert Teleconsulting",
+            subtitle: "We are building a seamless platform to connect you directly with certified agricultural experts. Get real-time advice, live diagnoses, and personalized treatment plans without leaving your farm.",
+            feature1Title: "Live Video Calls",
+            feature1Desc: "Show your crop's symptoms directly to experts via high-quality video streams for accurate, instant analysis.",
+            feature2Title: "Instant Chat Support",
+            feature2Desc: "Share images, receive digital prescriptions, and ask follow-up questions through our secure messaging system.",
+            feature3Title: "Verified Agronomists",
+            feature3Desc: "Every consultant on our platform is a rigorously vetted agricultural professional, ensuring safe and scientific advice."
           },
         },
       },
@@ -110,6 +178,36 @@ i18n
           "activeFarmers": "सक्रिय किसान",
           "accuracyRate": "सटीकता दर",
           "cropTypes": "फसल के प्रकार",
+
+          // --- Plants (Dynamic Outputs Hindi - Pure Hindi) ---
+          "Apple": "सेब",
+          "Corn_(maize)": "मक्का",
+          "Grape": "अंगूर",
+          "Pepper bell": "शिमला मिर्च",
+          "Pepper_bell": "शिमला मिर्च",
+          "Potato": "आलू",
+          "Strawberry": "स्ट्रॉबेरी",
+          "Tomato": "टमाटर",
+          "N/A": "उपलब्ध नहीं",
+
+          // --- Diseases (Dynamic Outputs Hindi - Pure Hindi) ---
+          "Healthy": "स्वस्थ",
+          "Apple Black rot": "सेब का काला सड़ांध",
+          "Apple scab": "सेब की पपड़ी",
+          "Apple Cedar rust": "सेब का देवदार रस्ट",
+          "Corn Common rust": "मक्के का सामान्य रस्ट",
+          "Grape Black rot": "अंगूर का काला सड़ांध",
+          "Potato Early blight": "आलू का अगेती झुलसा",
+          "Potato Late blight": "आलू का पछेती झुलसा",
+          "Strawberry Leaf scorch": "स्ट्रॉबेरी पत्ती झुलसा",
+          "Pepper_bell Bacterial spot": "शिमला मिर्च बैक्टीरियल स्पॉट",
+          "Tomato Early blight": "टमाटर का अगेती झुलसा",
+          "Tomato Septoria leaf spot": "टमाटर का सेप्टोरिया लीफ स्पॉट",
+          "Tomato Target Spot": "टमाटर का टारगेट स्पॉट",
+          "Tomato Yellow Curl Virus": "टमाटर पीला पत्ती मरोड़ वायरस",
+          "Tomato mosaic virus": "टमाटर मोज़ेक वायरस",
+          "Tomato healthy": "टमाटर स्वस्थ",
+
           description: {
             nav: [
               "होम",
@@ -122,7 +220,7 @@ i18n
             ],
             heading: [
               "आपका फसल डॉक्टर",
-              "फसल रोग का पता लगाना आसान हुआ आज ही हमारे साथ साइन अप करें!",
+              "फसल रोग का पता लगाना आसान हुआ!",
               "हमसे जुड़ें",
             ],
             home: [
@@ -132,7 +230,7 @@ i18n
               "शुरू हो जाओ",
               "भारतीय किसानों की सहायता करना",
               "फसल से संबंधित मुद्दों के लिए वन-स्टॉप समाधान",
-              "पता लगाने और विश्वसनीय समाधान, विशेषज्ञों के साथ टेलीकंसल्टिंग और किसानों के लिए एक सामुदायिक मंच",
+              "किसानों के लिए पहचान और विश्वसनीय समाधान। जल्द ही: विशेषज्ञों के साथ टेली-परामर्श और एक सामुदायिक मंच।",
               "शुरू हो जाओ",
               "किसानों की समस्या",
               "उपचार करने से पहले फसल की सही बीमारी जानना जरूरी है।",
@@ -160,6 +258,44 @@ i18n
               "किसान",
               "विशेषज्ञ",
             ],
+            placeholders: {
+              username: "यूजरनाम दर्ज करें",
+              password: "******",
+              first: "पहला नाम",
+              last: "अंतिम नाम",
+              phone: "10-अंकीय नंबर"
+            }
+          },
+          report: {
+            downloadPdf: "पीडीएफ डाउनलोड करें",
+            title: "🌾 किसान सेवक डायग्नोस्टिक रिपोर्ट",
+            plantName: "पौधे / फसल का नाम",
+            scientificName: "वैज्ञानिक नाम",
+            description: "पौधे का विवरण",
+            diseaseName: "बीमारी का नाम",
+            symptoms: "लक्षण",
+            trigger: "कारण (ट्रिगर)",
+            organic: "जैविक विधि का उपयोग कर नियंत्रण",
+            chemical: "रासायनिक विधि का उपयोग कर नियंत्रण"
+          },
+          teleconsulting: {
+            heading: "आपको विशेषज्ञों से जोड़ रहे हैं...",
+            startVideoCall: "वीडियो कॉल शुरू करें",
+            copyId: "आईडी कॉपी करें",
+            receiverId: "प्राप्तकर्ता की आईडी",
+            callButton: "कॉल करें",
+            answerButton: "उत्तर दें",
+            namePlaceholder: "नाम",
+            calling: "कॉल कर रहा है...",
+            comingSoon: "🚀 जल्द आ रहा है",
+            title: "विशेषज्ञ टेलीकंसल्टिंग",
+            subtitle: "हम आपको सीधे प्रमाणित कृषि विशेषज्ञों से जोड़ने के लिए एक निर्बाध मंच का निर्माण कर रहे हैं। अपना खेत छोड़े बिना वास्तविक समय की सलाह, लाइव निदान और व्यक्तिगत उपचार योजनाएं प्राप्त करें।",
+            feature1Title: "लाइव वीडियो कॉल",
+            feature1Desc: "सटीक, त्वरित विश्लेषण के लिए उच्च-गुणवत्ता वाले वीडियो स्ट्रीम के माध्यम से विशेषज्ञों को सीधे अपनी फसल के लक्षण दिखाएं।",
+            feature2Title: "त्वरित चैट समर्थन",
+            feature2Desc: "हमारे सुरक्षित मैसेजिंग सिस्टम के माध्यम से चित्र साझा करें, डिजिटल नुस्खे प्राप्त करें और अनुवर्ती प्रश्न पूछें।",
+            feature3Title: "सत्यापित कृषिविज्ञानी",
+            feature3Desc: "हमारे मंच पर हर सलाहकार एक कड़ाई से जांचा गया कृषि पेशेवर है, जो सुरक्षित और वैज्ञानिक सलाह सुनिश्चित करता है।"
           },
         },
       },

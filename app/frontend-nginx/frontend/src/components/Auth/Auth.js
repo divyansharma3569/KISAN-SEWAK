@@ -40,25 +40,29 @@ function Auth() {
             
             {/* Toggle Switch */}
             <div className="flex justify-center">
-              <Switch checked={enabled} onChange={setEnabled}>
-                <span className="bg-slate-800 rounded-full h-12 w-56 flex relative shadow-inner shadow-black/40 p-1">
+              <Switch
+                checked={enabled}
+                onChange={setEnabled}
+              >
+                <span
+                  className="bg-slate-800 rounded-full h-12 w-56 flex relative shadow-inner shadow-black/40 p-1"
+                >
                   <span
-                    className={`mr-auto flex justify-center items-center h-full w-1/2 rounded-full transition duration-300 ease-in-out transform bg-transparent text-white text-sm font-medium`}
-                  >
-                    {t("description.auth.2")}
-                  </span>
-                  <span
-                    className={`absolute left-1 flex justify-center items-center h-10 w-[108px] rounded-full transition duration-300 ease-in-out transform bg-gradient-to-r from-amber-300 to-orange-500 text-slate-950 font-bold shadow-md ${enabled ? "translate-x-full" : ""
+                    className={`flex justify-center items-center h-full w-1/2 rounded-full transition-colors duration-300 text-sm font-medium z-10 ${!enabled ? 'text-slate-950 font-bold' : 'text-white'
                       }`}
                   >
-                    {enabled
-                      ? t("description.auth.3")
-                      : t("description.auth.2")}
+                    {t('description.auth.2')}
                   </span>
                   <span
-                    className={`ml-auto flex justify-center items-center h-full w-1/2 rounded-full transition duration-300 ease-in-out transform bg-transparent text-white text-sm font-medium`}
+                    className={`flex justify-center items-center h-full w-1/2 rounded-full transition-colors duration-300 text-sm font-medium z-10 ${enabled ? 'text-slate-950 font-bold' : 'text-white'
+                      }`}
                   >
-                    {t("description.auth.3")}
+                    {t('description.auth.3')}
+                  </span>
+                  <span
+                    className={`absolute left-1 top-1 h-10 w-[108px] rounded-full transition-transform duration-300 ease-in-out bg-gradient-to-r from-amber-300 to-orange-500 shadow-md ${enabled ? 'translate-x-full' : 'translate-x-0'
+                      }`}
+                  >
                   </span>
                 </span>
               </Switch>
