@@ -65,6 +65,7 @@ i18n
           "Tomato Yellow Curl Virus": "Tomato Yellow Leaf Curl Virus",
           "Tomato mosaic virus": "Tomato Mosaic Virus",
           "Tomato healthy": "Tomato Healthy",
+          "Apple Cedar apple rust": "Cedar apple rust",
 
           description: {
             nav: [
@@ -207,6 +208,7 @@ i18n
           "Tomato Yellow Curl Virus": "टमाटर पीला पत्ती मरोड़ वायरस",
           "Tomato mosaic virus": "टमाटर मोज़ेक वायरस",
           "Tomato healthy": "टमाटर स्वस्थ",
+          "Apple Cedar apple rust": "सीडर एप्पल रस्ट",
 
           description: {
             nav: [

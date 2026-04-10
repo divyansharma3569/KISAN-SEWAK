@@ -26,30 +26,22 @@ const register = async (req, res, next) => {
   try {
     let result = await registerSchema.validateAsync(req.body);
 
-    const existingUser = await User.findOne({
-      $or: [
-        { username: result.username },
-        { phone: result.phone },
-        { email: result.email },
-      ],
-    });
+    // 1. Dynamically build the $or array to ignore empty/undefined fields
+    const searchConditions = [];
+    if (result.username) searchConditions.push({ username: result.username });
+    if (result.phone) searchConditions.push({ phone: result.phone });
 
-    if (existingUser) {
-      if (existingUser.username === result.username)
-        throw createHttpError.Conflict(
-          `${result.username} is already been registered`
-        );
+    // 2. Only query if there is something to search for
+    if (searchConditions.length > 0) {
+      const existingUser = await User.findOne({ $or: searchConditions });
 
-      if (existingUser.phone === result.phone)
-        throw createHttpError.Conflict(
-          `${result.phone} is already been registered`
-        );
+      if (existingUser) {
+        if (existingUser.username === result.username)
+          throw createHttpError.Conflict(`${result.username} has already been registered`);
 
-      if (result.email && existingUser.email === result.email)
-
-        throw createHttpError.Conflict(
-          `${result.email} is already been registered`
-        );
+        if (existingUser.phone === result.phone)
+          throw createHttpError.Conflict(`${result.phone} has already been registered`);
+      }
     }
 
     const salt = await bcrypt.genSalt(10);

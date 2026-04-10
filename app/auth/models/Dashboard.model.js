@@ -5,8 +5,8 @@ const DashoardSchema = new mongoose.Schema(
     createdAt: Date,
     ip: String,
     location: {
-      x: Number,
-      y: Number,
+      lat: Number,  // was x
+      lon: Number,  // was y
     },
     plantId: {
       type: mongoose.SchemaTypes.ObjectId,

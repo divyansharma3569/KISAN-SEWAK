@@ -23,8 +23,8 @@ const getDashboardData = async (req, res, next) => {
     ]);
 
     const populateData = await Promise.all([dashboardPlantData, dashboardDiseaseData]);
-    const plantData = Plant.populate(populateData[0], { path: "_id", select: "commonName" });
-    const diseaseData = Disease.populate(populateData[1], { path: "_id", select: "name" });
+    const plantData = await Plant.populate(populateData[0], { path: "_id", select: "commonName" });
+    const diseaseData = await Disease.populate(populateData[1], { path: "_id", select: "name" });
 
     // ==========================================
     // NEW: Real Daily Activity (Last 14 Days)
@@ -59,8 +59,8 @@ const getDashboardData = async (req, res, next) => {
     const visitorStat = await SystemStat.findOne({ identifier: "total_visitors" });
     const totalVisitors = visitorStat ? visitorStat.count + 30 : 30;
 
-    const totalPredictions = result[1].reduce((sum, item) => sum + item.numberOfValue, 0);
-    const topPlant = result[1].length > 0 && result[1][0]._id ? result[1][0]._id.commonName : "None";
+    const totalPredictions = plantData.reduce((sum, item) => sum + item.numberOfValue, 0);
+    const topPlant = plantData.length > 0 && plantData[0]._id ? plantData[0]._id.commonName : "None";
 
     res.status(200).json({
       totalPredictions,
@@ -68,17 +68,16 @@ const getDashboardData = async (req, res, next) => {
       totalVisitors,
       todaysDetections,
       mapData: result[0],
-      plantData: result[1].reduce(
+      plantData: plantData.reduce(
         (acc, item) => ({ legends: [...acc.legends, item._id ? item._id.commonName : "Unknown"], data: [...acc.data, item.numberOfValue] }),
         { legends: [], data: [] }
       ),
-      diseaseData: result[2].reduce(
+      diseaseData: diseaseData.reduce(
         (acc, item) => ({ legends: [...acc.legends, item._id ? item._id.name : "Unknown"], data: [...acc.data, item.numberOfValue] }),
         { legends: [], data: [] }
       ),
-      // Send our real data to the frontend
-      dailyActivity: result[3],
-      monthlyTrends: result[4] 
+      dailyActivity: result[1],
+      monthlyTrends: result[2]
     });
   } catch (err) {
     console.log({ err });
