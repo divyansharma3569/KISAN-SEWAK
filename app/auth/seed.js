@@ -46,10 +46,6 @@ async function seedDatabase() {
         const newDisease = await Disease.create({
           name: d.fullClassName, // Must exactly match the DL output (e.g., Apple___Apple_scab)
           thumbnail: "default_disease.jpg",
-          symptoms: d.diseaseName === "healthy" ? "None" : `Standard symptoms for ${d.diseaseName.replace(/_/g, ' ')}`,
-          trigger: d.diseaseName === "healthy" ? "None" : "Environmental factors",
-          organic: d.diseaseName === "healthy" ? "N/A" : "Neem oil / Organic fungicides",
-          chemical: d.diseaseName === "healthy" ? "N/A" : "Standard chemical fungicides"
         });
         diseaseIds.push(newDisease._id);
       }
