@@ -90,15 +90,15 @@ const Home = () => {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4 pt-8 border-t border-amber-200/10">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-amber-300">24K+</div>
-                  <div className="text-sm text-slate-400">{t("activeFarmers")}</div>
+                  <div className="text-3xl font-bold text-amber-300">40+</div>
+                  <div className="text-sm text-slate-400">{t("Total Visitors")}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-amber-300">98%</div>
                   <div className="text-sm text-slate-400">{t("accuracyRate")}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-amber-300">7</div>
+                  <div className="text-3xl font-bold text-amber-300">10+</div>
                   <div className="text-sm text-slate-400">{t("cropTypes")}</div>
                 </div>
               </div>

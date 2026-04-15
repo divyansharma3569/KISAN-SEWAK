@@ -76,8 +76,9 @@ const getDashboardData = async (req, res, next) => {
         (acc, item) => ({ legends: [...acc.legends, item._id ? item._id.name : "Unknown"], data: [...acc.data, item.numberOfValue] }),
         { legends: [], data: [] }
       ),
-      dailyActivity: result[1],
-      monthlyTrends: result[2]
+      // ✅ FIX: Change result[1] to result[3] and result[2] to result[4]
+      dailyActivity: result[3],
+      monthlyTrends: result[4]
     });
   } catch (err) {
     console.log({ err });
